@@ -1,0 +1,19 @@
+{
+  "name": "boilerlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lizgo14/boilerlab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lizgo14/boilerlab/issues"
+  },
+  "homepage": "https://github.com/Lizgo14/boilerlab#readme"
+}
