@@ -4,9 +4,11 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-// you'll of course want static middleware so your browser can request things like your 'bundle.js'
-app.use(express.static(path.join(__dirname, '../public')))
+
+//Logging middleware
 app.use(morgan('dev'))
+
+//Body Parsing middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -14,9 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api', require('./routes/routes.js')); // matches all requests to /api
 
 
-// Make sure this is right at the end of your server logic!
-// The only thing after this might be a piece of middleware to serve up 500 errors for server problems
-// (However, if you have middleware to serve up 404s, that go would before this as well)
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
 app.get('*', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 })
@@ -31,3 +32,5 @@ const port = process.env.PORT || 3000; // this can be very useful if you deploy 
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
+
+module.exports = app
