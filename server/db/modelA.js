@@ -2,12 +2,12 @@ const db = require('./db')
 const Sequelize = require('sequelize')
 
 const ModelA = db.define('modelA',{
-  column1: {
+  username: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  column2: {
-    type: Sequelize.INTEGER
+  password: {
+    type: Sequelize.STRING
   }
 })
 

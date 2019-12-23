@@ -7,9 +7,9 @@
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
     "start-dev": "npm run build-client-watch & npm run start-server",
-    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
+    "start-server": "nodemon server main.js -e html,js,scss --ignore public --ignore client",
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -33,8 +33,11 @@
   "dependencies": {
     "@babel/preset-env": "^7.7.7",
     "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^6.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "morgan": "^1.9.1",
+    "passport": "^0.4.1",
     "pg": "^7.15.1",
     "pg-hstore": "^2.3.3",
     "react": "^16.12.0",
