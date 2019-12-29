@@ -4,7 +4,7 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const {db, ModelA, ModelB} = require('./db/index')
-const port = process.env.PORT || 3000; // this can be very useful if you deploy to Heroku!
+const port = 3000; // this can be very useful if you deploy to Heroku!process.env.PORT ||
 const session = require('express-session')
 const SequelizeStore= require('connect-session-sequelize')(session.Store)
 const dbStore = new SequelizeStore(db)
@@ -88,8 +88,8 @@ app.use(function (err, req, res, next) {
 async function startApp() {
   await dbStore.sync()
   await db.sync()
-  await createApp()
-  await app.listen(port, function () {
+  createApp()
+  app.listen(port, function () {
     console.log(`Listening on port ${port}`);
   })
 }
