@@ -2,7 +2,7 @@ const db = require('./db')
 const Sequelize = require('sequelize')
 const crypto = require('crypto')
 
-const ModelA = db.define('modelA',{
+const ModelA = db.define('user',{
   username: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -11,13 +11,16 @@ const ModelA = db.define('modelA',{
   password: {
     type: Sequelize.STRING,
   },
+  google_id: {
+    type: Sequelize.STRING
+  },
   salt: {
     type: Sequelize.STRING
     }
   }, {
     hooks:{
-      beforeCreate: setSaltPassword,
-      beforeUpdate: setSaltPassword
+      beforeCreate: setSaltAndPassword,
+      beforeUpdate: setSaltAndPassword
     }
   })
 
@@ -26,7 +29,7 @@ ModelA.prototype.correctPassword = function(password){
   return this.Model.encryptPassword(password,this.salt) === this.password
 }
 
-User.prototype.sanitize = function () {
+ModelA.prototype.sanitize = function () {
   return _.omit(this.toJSON(), ['password', 'salt']);
 }
 
